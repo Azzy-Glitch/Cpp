@@ -59,9 +59,9 @@ public:
 
 int main()
 {
-    Result harry;
-    harry.set_roll_number(420);
-    harry.set_marks(94.0, 90.0);
-    harry.display_results();
+    Result Azzy;
+    Azzy.set_roll_number(420);
+    Azzy.set_marks(94.0, 90.0);
+    Azzy.display_results();
     return 0;
 }
