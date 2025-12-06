@@ -12,7 +12,7 @@ public:
     
     void get_std_info();
     
-    student(string n, int r, string e, string p)
+    student(string n, string r, string e, string p)
     {
         std_name = n;
         std_Reg = r;
