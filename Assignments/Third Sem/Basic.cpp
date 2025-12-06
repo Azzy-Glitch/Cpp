@@ -4,22 +4,30 @@ using namespace std;
 
 class student
 {
-public:
+private:
     string std_name;
     string std_Reg;
     string std_email;
     string std_prog;
-    
+
+public:
+
+  // ======= SETTERS =======
+    void setName(string n) { std_name = n; }
+    void setReg(string r) { std_Reg = r; }
+    void setEmail(string e) { std_email = e; }
+    void setProg(string p) { std_prog = p; }
+
     void get_std_info();
-    
-    student(string n, string r, string e, string p)
-    {
-        std_name = n;
-        std_Reg = r;
-        std_email = e;
-        std_prog = p;
-    }
-    
+
+    // student(string n, string r, string e, string p)
+    // {
+    //     std_name = n;
+    //     std_Reg = r;
+    //     std_email = e;
+    //     std_prog = p;
+    // }
+
     student()
     {
         get_std_info();
@@ -33,15 +41,15 @@ public:
         cout << "Email: " << std_email << endl;
         cout << endl;
     }
-
 };
 
 void student::get_std_info()
 {
     // open file in append mode (so previous data doesn't get erased)
     fstream std_data("data.txt", ios::app);
-    
-    if (!std_data) {
+
+    if (!std_data)
+    {
         cout << "File not found!" << endl;
         return;
     }
