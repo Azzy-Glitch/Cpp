@@ -46,8 +46,6 @@ void student::get_std_info()
         return;
     }
 
-    cin.ignore();
-
     cout << "Enter Name: ";
     getline(cin, std_name);
 
