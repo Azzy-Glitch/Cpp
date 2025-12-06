@@ -65,4 +65,3 @@ int main()
     harry.display_results();
     return 0;
 }
-
