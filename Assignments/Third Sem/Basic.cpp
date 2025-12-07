@@ -11,12 +11,11 @@ private:
     string std_prog;
 
 public:
-
-//   // ======= SETTERS =======
-//     void setName(string n) { std_name = n; }
-//     void setReg(string r) { std_Reg = r; }
-//     void setEmail(string e) { std_email = e; }
-//     void setProg(string p) { std_prog = p; }
+    //   // ======= SETTERS =======
+    //     void setName(string n) { std_name = n; }
+    //     void setReg(string r) { std_Reg = r; }
+    //     void setEmail(string e) { std_email = e; }
+    //     void setProg(string p) { std_prog = p; }
 
     void get_std_info();
 
@@ -80,6 +79,10 @@ void student::get_std_info()
 
 int main()
 {
-    student s[5];
+    int i = 0;
+    cout << "Enter Number of Students: ";
+    cin >> i;
+    student s[i];
+
     return 0;
 }
