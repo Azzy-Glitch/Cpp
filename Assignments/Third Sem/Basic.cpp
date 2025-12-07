@@ -12,21 +12,21 @@ private:
 
 public:
 
-  // ======= SETTERS =======
-    void setName(string n) { std_name = n; }
-    void setReg(string r) { std_Reg = r; }
-    void setEmail(string e) { std_email = e; }
-    void setProg(string p) { std_prog = p; }
+//   // ======= SETTERS =======
+//     void setName(string n) { std_name = n; }
+//     void setReg(string r) { std_Reg = r; }
+//     void setEmail(string e) { std_email = e; }
+//     void setProg(string p) { std_prog = p; }
 
     void get_std_info();
 
-    // student(string n, string r, string e, string p)
-    // {
-    //     std_name = n;
-    //     std_Reg = r;
-    //     std_email = e;
-    //     std_prog = p;
-    // }
+    student(string n, string r, string e, string p)
+    {
+        std_name = n;
+        std_Reg = r;
+        std_email = e;
+        std_prog = p;
+    }
 
     student()
     {
