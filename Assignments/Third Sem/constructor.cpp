@@ -6,6 +6,7 @@ class teacher{
     string t_qualification;
     string t_programe;
   
+    public:
     teacher(){
         cout<<"Enter teacher no :"<<endl;
         cin>>t_no;
@@ -16,8 +17,7 @@ class teacher{
         cout<<"Enter teacher programe :"<<endl;
         cin>>t_programe;
     }
-    
-    public:
+
     void display_t_info(){
         cout<<"Teacher no : "<<t_no<<endl;
         cout<<"Teacher name : "<<t_name<<endl;
