@@ -19,7 +19,7 @@ public:
     }
 };
 
-void Product ::get_data()
+void Product :: get_data()
 {
     cout << "Enter Product Name ";
     cin >> pname;
@@ -31,7 +31,7 @@ void Product ::get_data()
     cin >> price;
 }
 
-void Product ::display_data()
+void Product :: display_data()
 {
     cout << "Enter Product Name " << pname;
     cout << "Enter Product Color " << pcolor;
