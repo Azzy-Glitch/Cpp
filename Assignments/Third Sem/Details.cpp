@@ -11,12 +11,20 @@ class Person
     string house;
     void get_data();
     void display_data();
+    void get_car();
+    void get_house();
+    void display_car();
+    void display_house();
 
 public:
     Person()
     {
         get_data();
+        get_car();
+        get_house();
         display_data();
+        display_car();
+        display_house();
     }
 };
 
@@ -41,6 +49,28 @@ void Person ::display_data()
     cout << "Height " << pHeight << endl;
     cout << "Car Model: " << car << endl;
     cout << "House Address: " << house << endl;
+}
+
+void Person ::get_car()
+{
+    cout << "Enter Car Model: ";
+    cin >> car;
+}
+
+void Person ::get_house()
+{
+    cout << "Enter House Address: ";
+    cin >> house;
+}
+
+void Person ::display_car()
+{
+    cout << "Car Model: " << car;
+}
+
+void Person ::display_house()
+{
+    cout << "House Address: " << house;
 }
 
 int main()
