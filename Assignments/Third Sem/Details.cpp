@@ -26,6 +26,20 @@ public:
         display_car();
         display_house();
     }
+    
+    // Setters
+    void setPname(string name) { pname = name; }
+    void setPgender(string gender) { pgender = gender; }
+    void setPHeight(string height) { pHeight = height; }
+    void setCar(string carModel) { car = carModel; }
+    void setHouse(string houseAddr) { house = houseAddr; }
+    
+    // Getters
+    string getPname() { return pname; }
+    string getPgender() { return pgender; }
+    string getPHeight() { return pHeight; }
+    string getCar() { return car; }
+    string getHouse() { return house; }
 };
 
 void Person ::get_data()
