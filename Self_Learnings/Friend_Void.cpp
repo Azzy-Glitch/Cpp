@@ -27,10 +27,12 @@ public:
     }
     friend void add(X, Y);
 };
+
 void add(X o1, Y o2)
 {
     cout << "Displaying data of Both Classes X and Y is " << o1.data + o2.num <<endl;
 }
+
 int main()
 {
     X a;
