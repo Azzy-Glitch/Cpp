@@ -1,44 +1,44 @@
-//A system aotomatically generated closes account when the program ends
 #include <iostream>
+
 using namespace std;
 
-// Base class
-class BankAccount
+class library
 {
-protected:
-    string accHolder;
-    double balance;   
+    string book_title;
+    string author;
+    int year;
 
 public:
-    BankAccount() {}
-    BankAccount(string n, double b)
+    library()
     {
-        accHolder = n;
-        balance = b;
-        cout << "BankAccount constructor called" << endl;
+        book_title = "Unknown";
+        author = "Unknown";
+        year = 0;
     }
-// function to deposit amount
-    void deposit(double amount)
+    library(string t, string a, int y)
     {
-        balance += amount;
-        cout << "Deposited: " << amount << ", New Balance: " << balance << endl;
-    }
-
-    ~BankAccount()
-    {
-        cout << "Account of " << accHolder << " with balance " 
-        << balance << " is now closed." << endl;
+        book_title = t;
+        author = a;
+        year = y;
     }
 
+    void display()
+    {
+        cout << "Book Title: " << book_title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Book ID: " << year << endl;
+    }
 };
 
-int main(){
-    BankAccount account1("Alice", 1000.0);
-    account1.deposit(500.0);
+int main()
+{
 
-    BankAccount account2("Bob", 1500.0);
-    account2.deposit(300.0);
+    library book1("The Great Gatsby", "F. Scott Fitzgerald", 1925);
+    library book2("To Kill a Mockingbird", "Harper Lee", 1960);
+    book1.display();
+    book2.display();
+    library book3;
+    book3.display();
 
     return 0;
-
 }
