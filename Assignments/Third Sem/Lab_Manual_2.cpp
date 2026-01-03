@@ -1,4 +1,4 @@
-//A system aotomatically generated closes account when the program ends
+// A system aotomatically generated closes account when the program ends
 #include <iostream>
 using namespace std;
 
@@ -7,7 +7,7 @@ class BankAccount
 {
 protected:
     string accHolder;
-    double balance;   
+    double balance = 0;
 
 public:
     BankAccount() {}
@@ -17,7 +17,7 @@ public:
         balance = b;
         cout << "BankAccount constructor called" << endl;
     }
-// function to deposit amount
+    // function to deposit amount
     void deposit(double amount)
     {
         balance += amount;
@@ -26,13 +26,13 @@ public:
 
     ~BankAccount()
     {
-        cout << "Account of " << accHolder << " with balance " 
-        << balance << " is now closed." << endl;
+        cout << "Account of " << accHolder << " with balance "
+             << balance << " is now closed." << endl;
     }
-
 };
 
-int main(){
+int main()
+{
     BankAccount account1("Alice", 1000.0);
     account1.deposit(500.0);
 
@@ -40,5 +40,4 @@ int main(){
     account2.deposit(300.0);
 
     return 0;
-
 }
