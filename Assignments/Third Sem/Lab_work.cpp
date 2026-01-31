@@ -5,50 +5,106 @@
 // Display Amount
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 class ATM
 {
-    float balance;
+    vector<float> balance;
+    vector<int> AccountNumber;
+    vector<string> AccHolder;
 
 public:
     ATM()
     {
-        balance = 0;
+        balance = vector<float>();
+        AccHolder = vector<string>();
+        AccountNumber = vector<int>();
     }
 
-    void deposit(float amount)
+    void setAccountDetails(int accNum, string accHolder)
     {
-        balance += amount;
-        cout << "Deposited: Rs " << amount << endl;
+        AccountNumber.push_back(accNum);
+        AccHolder.push_back(accHolder);
+        balance.push_back(0);
     }
 
-    void withdraw(float amount)
+    void deposit(int accNum, float amount)
     {
-        if (amount > 2000)
+        vector<int>::iterator it = find(AccountNumber.begin(), AccountNumber.end(), accNum);
+        if (it != AccountNumber.end())
         {
-            cout << "Withdrawal limit exceeded. You can withdraw up to Rs 2000 per transaction." << endl;
-        }
-        else if (amount > balance)
-        {
-            cout << "Insufficient balance." << endl;
+            int index = std::distance(AccountNumber.begin(), it);
+            balance[index] += amount;
+            cout << "Deposited: Rs " << amount << " to account " << accNum << endl;
         }
         else
         {
-            balance -= amount;
-            cout << "Withdrew: Rs " << amount << endl;
+            cout << "Account not found." << endl;
         }
     }
-    void displayBalance()
+
+    void withdraw(int accNum, float amount)
     {
-        cout << "Current Balance: Rs " << balance << endl;
+        auto it = find(AccountNumber.begin(), AccountNumber.end(), accNum);
+        if (it != AccountNumber.end())
+        {
+            int index = distance(AccountNumber.begin(), it);
+            if (amount > 2000)
+            {
+                cout << "Withdrawal limit exceeded. You can withdraw up to Rs 2000 per transaction." << endl;
+            }
+            else if (amount > balance[index])
+            {
+                cout << "Insufficient balance." << endl;
+            }
+            else
+            {
+                balance[index] -= amount;
+                cout << "Withdrew: Rs " << amount << " from account " << accNum << endl;
+            }
+        }
+        else
+        {
+            cout << "Account not found." << endl;
+        }
+    }
+
+    void displayBalance(int accNum)
+    {
+        auto it = find(AccountNumber.begin(), AccountNumber.end(), accNum);
+        if (it != AccountNumber.end())
+        {
+            int index = distance(AccountNumber.begin(), it);
+            cout << "Current Balance for account " << accNum << ": Rs " << balance[index] << endl;
+        }
+        else
+        {
+            cout << "Account not found." << endl;
+        }
     }
 };
+
 int main()
 {
     ATM myATM;
     int choice;
     float amount;
+    int accNum;
+    string accHolder;
+    int NumofAccounts;
+    cout << "Enter number of accounts: ";
+    cin >> NumofAccounts;
+    for (int i = 0; i < NumofAccounts; i++)
+    {
+        cout << "Enter Account Number: ";
+        cin >> accNum;
+        cout << "Enter Account Holder Name: ";
+        cin.ignore();
+        getline(cin, accHolder);
+        myATM.setAccountDetails(accNum, accHolder);
+    }
 
     do
     {
@@ -63,17 +119,23 @@ int main()
         switch (choice)
         {
         case 1:
+            cout << "Enter Account Number: ";
+            cin >> accNum;
             cout << "Enter amount to deposit: Rs ";
             cin >> amount;
-            myATM.deposit(amount);
+            myATM.deposit(accNum, amount);
             break;
         case 2:
+            cout << "Enter Account Number: ";
+            cin >> accNum;
             cout << "Enter amount to withdraw: Rs ";
             cin >> amount;
-            myATM.withdraw(amount);
+            myATM.withdraw(accNum, amount);
             break;
         case 3:
-            myATM.displayBalance();
+            cout << "Enter Account Number: ";
+            cin >> accNum;
+            myATM.displayBalance(accNum);
             break;
         case 4:
             cout << "Exiting ATM. Thank you!" << endl;
