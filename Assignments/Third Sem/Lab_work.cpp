@@ -1,148 +1,102 @@
-// Write a cpp program which acts like a basic AtM
-// it must have the following Functions
-// Deposit Amount
-// WithDraw Allow Rs 2000 Per Transaction
-// Display Amount
-
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 class ATM
 {
-    vector<float> balance;
-    vector<int> AccountNumber;
-    vector<string> AccHolder;
+private:
+    int accountNumber;
+    float balance;
 
 public:
-    ATM()
+    // Constructor
+    ATM(int acc)
     {
-        balance = vector<float>();
-        AccHolder = vector<string>();
-        AccountNumber = vector<int>();
+        accountNumber = acc;
+        balance = 0;
     }
 
-    void setAccountDetails(int accNum, string accHolder)
+    void deposit(float amount)
     {
-        AccountNumber.push_back(accNum);
-        AccHolder.push_back(accHolder);
-        balance.push_back(0);
-    }
-
-    void deposit(int accNum, float amount)
-    {
-        vector<int>::iterator it = find(AccountNumber.begin(), AccountNumber.end(), accNum);
-        if (it != AccountNumber.end())
+        if (amount > 0)
         {
-            int index = std::distance(AccountNumber.begin(), it);
-            balance[index] += amount;
-            cout << "Deposited: Rs " << amount << " to account " << accNum << endl;
+            balance += amount;
+            cout << "Amount Deposited: Rs " << amount << endl;
         }
         else
         {
-            cout << "Account not found." << endl;
+            cout << "Invalid amount!" << endl;
         }
     }
 
-    void withdraw(int accNum, float amount)
+    void withdraw(float amount)
     {
-        auto it = find(AccountNumber.begin(), AccountNumber.end(), accNum);
-        if (it != AccountNumber.end())
+        if (amount > 2000)
         {
-            int index = distance(AccountNumber.begin(), it);
-            if (amount > 2000)
-            {
-                cout << "Withdrawal limit exceeded. You can withdraw up to Rs 2000 per transaction." << endl;
-            }
-            else if (amount > balance[index])
-            {
-                cout << "Insufficient balance." << endl;
-            }
-            else
-            {
-                balance[index] -= amount;
-                cout << "Withdrew: Rs " << amount << " from account " << accNum << endl;
-            }
+            cout << "You can withdraw only Rs 2000 per transaction." << endl;
+        }
+        else if (amount > balance)
+        {
+            cout << "Insufficient Balance!" << endl;
         }
         else
         {
-            cout << "Account not found." << endl;
+            balance -= amount;
+            cout << "Amount Withdrawn: Rs " << amount << endl;
         }
     }
 
-    void displayBalance(int accNum)
+    void displayBalance()
     {
-        auto it = find(AccountNumber.begin(), AccountNumber.end(), accNum);
-        if (it != AccountNumber.end())
-        {
-            int index = distance(AccountNumber.begin(), it);
-            cout << "Current Balance for account " << accNum << ": Rs " << balance[index] << endl;
-        }
-        else
-        {
-            cout << "Account not found." << endl;
-        }
+        cout << "Current Balance: Rs " << balance << endl;
     }
 };
 
 int main()
 {
-    ATM myATM;
-    int choice;
+    int accNum, choice;
     float amount;
-    int accNum;
-    string accHolder;
-    int NumofAccounts;
-    cout << "Enter number of accounts: ";
-    cin >> NumofAccounts;
-    for (int i = 0; i < NumofAccounts; i++)
-    {
-        cout << "Enter Account Number: ";
-        cin >> accNum;
-        cout << "Enter Account Holder Name: ";
-        cin.ignore();
-        getline(cin, accHolder);
-        myATM.setAccountDetails(accNum, accHolder);
-    }
+
+    cout << "Enter Account Number: ";
+    cin >> accNum;
+
+    ATM myATM(accNum);
 
     do
     {
-        cout << "\nATM Menu:\n";
-        cout << "1. Deposit Amount\n";
-        cout << "2. Withdraw Amount\n";
+        cout << "\nATM Menu\n";
+        cout << "1. Deposit\n";
+        cout << "2. Withdraw\n";
         cout << "3. Display Balance\n";
         cout << "4. Exit\n";
-        cout << "Enter your choice: ";
+        cout << "Enter Choice: ";
         cin >> choice;
 
         switch (choice)
         {
         case 1:
-            cout << "Enter Account Number: ";
-            cin >> accNum;
-            cout << "Enter amount to deposit: Rs ";
+            cout << "Enter Amount to Deposit: ";
             cin >> amount;
-            myATM.deposit(accNum, amount);
+            myATM.deposit(amount);
             break;
+
         case 2:
-            cout << "Enter Account Number: ";
-            cin >> accNum;
-            cout << "Enter amount to withdraw: Rs ";
+            cout << "Enter Amount to Withdraw: ";
             cin >> amount;
-            myATM.withdraw(accNum, amount);
+            myATM.withdraw(amount);
             break;
+
         case 3:
-            cout << "Enter Account Number: ";
-            cin >> accNum;
-            myATM.displayBalance(accNum);
+            myATM.displayBalance();
             break;
+
         case 4:
-            cout << "Exiting ATM. Thank you!" << endl;
+            cout << "Thank you for using ATM!" << endl;
             break;
+
         default:
-            cout << "Invalid choice. Please try again." << endl;
+            cout << "Invalid Choice!" << endl;
         }
+
     } while (choice != 4);
 
     return 0;
