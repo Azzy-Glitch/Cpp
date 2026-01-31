@@ -8,7 +8,6 @@ private:
     float balance;
 
 public:
-    // Constructor
     ATM(int acc)
     {
         accountNumber = acc;
@@ -53,51 +52,12 @@ public:
 
 int main()
 {
-    int accNum, choice;
-    float amount;
+    ATM myATM(123456);
 
-    cout << "Enter Account Number: ";
-    cin >> accNum;
-
-    ATM myATM(accNum);
-
-    do
-    {
-        cout << "\nATM Menu\n";
-        cout << "1. Deposit\n";
-        cout << "2. Withdraw\n";
-        cout << "3. Display Balance\n";
-        cout << "4. Exit\n";
-        cout << "Enter Choice: ";
-        cin >> choice;
-
-        switch (choice)
-        {
-        case 1:
-            cout << "Enter Amount to Deposit: ";
-            cin >> amount;
-            myATM.deposit(amount);
-            break;
-
-        case 2:
-            cout << "Enter Amount to Withdraw: ";
-            cin >> amount;
-            myATM.withdraw(amount);
-            break;
-
-        case 3:
-            myATM.displayBalance();
-            break;
-
-        case 4:
-            cout << "Thank you for using ATM!" << endl;
-            break;
-
-        default:
-            cout << "Invalid Choice!" << endl;
-        }
-
-    } while (choice != 4);
+    myATM.deposit(1000);
+    myATM.displayBalance();
+    myATM.withdraw(5000);
+    myATM.displayBalance();
 
     return 0;
 }
