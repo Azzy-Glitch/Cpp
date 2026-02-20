@@ -74,10 +74,10 @@ public:
 
 int main()
 {
-    Result harry;
-    harry.set_number(4200);
-    harry.set_marks(78.9, 99.5);
-    harry.set_score(9);
-    harry.display();
+    Result Azzy;
+    Azzy.set_number(4200);
+    Azzy.set_marks(78.9, 99.5);
+    Azzy.set_score(9);
+    Azzy.display();
     return 0;
 }
