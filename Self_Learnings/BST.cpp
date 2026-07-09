@@ -1,39 +1,47 @@
 #include <iostream>
 using namespace std;
 
-class Node {
+class Node
+{
 public:
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 
-    Node(int value) {
+    Node(int value)
+    {
         data = value;
         left = nullptr;
         right = nullptr;
     }
 };
 
-class BST {
+class BST
+{
 public:
-
     // 🔹 Insert Node
-    Node* insert(Node* root, int value) {
-        if (root == nullptr) {
+    Node *insert(Node *root, int value)
+    {
+        if (root == nullptr)
+        {
             return new Node(value);
         }
-        if (value < root->data) {
+        if (value < root->data)
+        {
             root->left = insert(root->left, value);
-        } 
-        else {
+        }
+        else
+        {
             root->right = insert(root->right, value);
         }
         return root;
     }
 
     // 🔹 Inorder Traversal (Sorted Output)
-    void inorder(Node* root) {
-        if (root == nullptr) return;
+    void inorder(Node *root)
+    {
+        if (root == nullptr)
+            return;
 
         inorder(root->left);
         cout << root->data << " ";
@@ -41,10 +49,13 @@ public:
     }
 
     // 🔹 Search
-    bool search(Node* root, int key) {
-        if (root == nullptr) return false;
+    bool search(Node *root, int key)
+    {
+        if (root == nullptr)
+            return false;
 
-        if (root->data == key) return true;
+        if (root->data == key)
+            return true;
 
         if (key < root->data)
             return search(root->left, key);
@@ -53,9 +64,10 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     BST tree;
-    Node* root = nullptr;
+    Node *root = nullptr;
 
     // Insert values
     root = tree.insert(root, 10);
